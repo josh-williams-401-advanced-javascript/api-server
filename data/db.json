@@ -1,0 +1,39 @@
+{
+  "categories": [
+    {
+      "id": "1",
+      "display_name": "Shirt",
+      "description": "Upper Body Garment",
+      "name": "shirt"
+    },
+    {
+      "id": "2",
+      "display_name": "Pants",
+      "description": "Leg Garments",
+      "name": "pants"
+    }
+  ],
+  "products": [
+    {
+      "id": "1",
+      "category": "pants",
+      "name": "jeans",
+      "display_name": "Blue Jeans",
+      "description": "Classic comfortable blue jeans"
+    },
+    {
+      "id": "2",
+      "category": "shirt",
+      "name": "tshirt",
+      "display_name": "T Shirt",
+      "description": "A classy yellow T Shirt"
+    },
+    {
+      "id": "3",
+      "category": "pants",
+      "name": "khakis",
+      "display_name": "Khakis",
+      "description": "Khakis in many colors"
+    }
+  ]
+}
