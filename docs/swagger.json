@@ -1,0 +1,271 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "description" : "defaultDescription",
+    "version" : "0.1",
+    "title" : "defaultTitle"
+  },
+  "paths" : {
+    "/products/1" : {
+      "patch" : {
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "Definition generated from Swagger Inspector",
+            "schema" : {
+              "$ref" : "#/definitions/Model5"
+            }
+          }
+        }
+      }
+    },
+    "/products/2" : {
+      "put" : {
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "body",
+          "required" : false,
+          "schema" : {
+            "$ref" : "#/definitions/Model0"
+          },
+          "x-examples" : {
+            "application/json" : "{\n      \"id\": \"2\",\n      \"category\": \"shirts\",\n      \"name\": \"t-shirt\",\n      \"display_name\": \"T-Shirt\",\n      \"description\": \"A classy yellow T-Shirt\"\n    }"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Definition generated from Swagger Inspector",
+            "schema" : {
+              "$ref" : "#/definitions/Model7"
+            }
+          }
+        }
+      }
+    },
+    "/categories/1" : {
+      "delete" : {
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "body",
+          "required" : false,
+          "schema" : {
+            "$ref" : "#/definitions/Model1"
+          },
+          "x-examples" : {
+            "application/json" : "{\n      \"id\": \"2\",\n      \"category\": \"shirts\",\n      \"name\": \"t-shirt\",\n      \"display_name\": \"T-Shirt\",\n      \"description\": \"A classy yellow T-Shirt\"\n    }"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Definition generated from Swagger Inspector",
+            "schema" : {
+              "$ref" : "#/definitions/Model8"
+            }
+          }
+        }
+      }
+    },
+    "/{param1}" : {
+      "get" : {
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "category",
+          "in" : "query",
+          "required" : false,
+          "type" : "string",
+          "x-example" : "pants"
+        }, {
+          "name" : "id",
+          "in" : "query",
+          "required" : false,
+          "type" : "string",
+          "x-example" : "1"
+        }, {
+          "name" : "param1",
+          "in" : "path",
+          "description" : "Example values form path are: 'products' and 'param0'",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Definition generated from Swagger Inspector",
+            "schema" : {
+              "$ref" : "#/definitions/Model6"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions" : {
+    "Model0" : {
+      "properties" : {
+        "id" : {
+          "type" : "string"
+        },
+        "category" : {
+          "type" : "string"
+        },
+        "name" : {
+          "type" : "string"
+        },
+        "display_name" : {
+          "type" : "string"
+        },
+        "description" : {
+          "type" : "string"
+        }
+      }
+    },
+    "Model1" : {
+      "properties" : {
+        "id" : {
+          "type" : "string"
+        },
+        "category" : {
+          "type" : "string"
+        },
+        "name" : {
+          "type" : "string"
+        },
+        "display_name" : {
+          "type" : "string"
+        },
+        "description" : {
+          "type" : "string"
+        }
+      }
+    },
+    "Array" : {
+      "properties" : {
+        "id" : {
+          "type" : "string"
+        },
+        "display_name" : {
+          "type" : "string"
+        },
+        "description" : {
+          "type" : "string"
+        },
+        "name" : {
+          "type" : "string"
+        }
+      }
+    },
+    "Model3_Array" : {
+      "properties" : {
+        "id" : {
+          "type" : "string"
+        },
+        "category" : {
+          "type" : "string"
+        },
+        "name" : {
+          "type" : "string"
+        },
+        "display_name" : {
+          "type" : "string"
+        },
+        "description" : {
+          "type" : "string"
+        }
+      }
+    },
+    "Model3" : {
+      "type" : "array",
+      "items" : {
+        "$ref" : "#/definitions/Model3_Array"
+      }
+    },
+    "Model4_Array" : {
+      "properties" : {
+        "id" : {
+          "type" : "string"
+        },
+        "category" : {
+          "type" : "string"
+        },
+        "name" : {
+          "type" : "string"
+        },
+        "display_name" : {
+          "type" : "string"
+        },
+        "description" : {
+          "type" : "string"
+        }
+      }
+    },
+    "Model5" : {
+      "properties" : {
+        "id" : {
+          "type" : "string"
+        },
+        "category" : {
+          "type" : "string"
+        },
+        "name" : {
+          "type" : "string"
+        },
+        "display_name" : {
+          "type" : "string"
+        },
+        "description" : {
+          "type" : "string"
+        }
+      }
+    },
+    "Model6_Array" : {
+      "properties" : {
+        "id" : {
+          "type" : "string"
+        },
+        "category" : {
+          "type" : "string"
+        },
+        "name" : {
+          "type" : "string"
+        },
+        "display_name" : {
+          "type" : "string"
+        },
+        "description" : {
+          "type" : "string"
+        }
+      }
+    },
+    "Model6" : {
+      "type" : "array",
+      "items" : {
+        "$ref" : "#/definitions/Model6_Array"
+      }
+    },
+    "Model7" : {
+      "properties" : {
+        "id" : {
+          "type" : "string"
+        },
+        "category" : {
+          "type" : "string"
+        },
+        "name" : {
+          "type" : "string"
+        },
+        "display_name" : {
+          "type" : "string"
+        },
+        "description" : {
+          "type" : "string"
+        }
+      }
+    },
+    "Model8" : { }
+  }
+}

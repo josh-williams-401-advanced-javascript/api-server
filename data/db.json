@@ -1,32 +1,32 @@
 {
   "categories": [
     {
-      "id": "1",
-      "display_name": "Shirt",
-      "description": "Upper Body Garment",
-      "name": "shirt"
-    },
-    {
       "id": "2",
       "display_name": "Pants",
       "description": "Leg Garments",
       "name": "pants"
+    },
+    {
+      "id": "3",
+      "display_name": "Gloves",
+      "description": "Hand Garments",
+      "name": "gloves"
     }
   ],
   "products": [
     {
       "id": "1",
       "category": "pants",
-      "name": "jeans",
+      "name": "blue jeans",
       "display_name": "Blue Jeans",
       "description": "Classic comfortable blue jeans"
     },
     {
       "id": "2",
-      "category": "shirt",
-      "name": "tshirt",
-      "display_name": "T Shirt",
-      "description": "A classy yellow T Shirt"
+      "category": "shirts",
+      "name": "t-shirt",
+      "display_name": "T-Shirt",
+      "description": "A classy yellow T-Shirt"
     },
     {
       "id": "3",
@@ -34,6 +34,13 @@
       "name": "khakis",
       "display_name": "Khakis",
       "description": "Khakis in many colors"
+    },
+    {
+      "id": "4",
+      "display_name": "Bike Gloves",
+      "description": "Gloves for riding",
+      "name": "bike gloves",
+      "category": "gloves"
     }
   ]
 }
