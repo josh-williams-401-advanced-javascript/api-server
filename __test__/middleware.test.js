@@ -19,7 +19,7 @@ describe('middleware', () => {
     expect(next).toHaveBeenCalled();
   });
   it('calls 500 in the middleware', async () => {
-    fiveHundred('req',{status:()=>{return{send:()=>{}}}}, next);
+    fiveHundred('req',{status:()=>{return{send:()=>{}};}},next);
     expect(next).toHaveBeenCalled();
   });
 
