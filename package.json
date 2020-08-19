@@ -8,7 +8,9 @@
     "lib": "lib"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "lint": "eslint **/*.js",
+    "test": "jest --coverage",
+    "test-watch": "jest --watchAll --coverage"
   },
   "repository": {
     "type": "git",
@@ -22,6 +24,8 @@
   "homepage": "https://github.com/josh-williams-401-advanced-javascript/api-server#readme",
   "dependencies": {
     "dotenv": "^8.2.0",
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "jest": "^26.4.0",
+    "supertest": "^4.0.2"
   }
 }
