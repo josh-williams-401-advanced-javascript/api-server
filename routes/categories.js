@@ -2,50 +2,31 @@
 
 const express = require('express');
 const router = express.Router();
+const Model = require('../lib/models/categories/categories.collection');
+const categoryAction = new Model();
 
-// change this to a persisting database
-const db = {
-  products: [],
-  categories: [],
-};
-
-router.post('/categories', (req,res) => {
-  db.categories.push(req.body);
-  res.status(201).json(req.body);
-});
-router.get('/categories', (req,res) => {
-  res.status(200).json(db.categories);
-});
-router.get('/categories/:id', (req,res) => {
-  let category = db.categories.filter(entry => entry.id === req.params.id);
-  res.status(200).json(category[0]);
-});
-router.put('/categories/:id', (req,res) => {
-  let updatedCategory;
-  db.categories.forEach(category => {
-    if(category.id === req.params.id) {
-
-      category.id = req.body.id;
-      category.name = req.body.name;
-      category.display_name = req.body.display_name;
-      category.description = req.body.description;
-
-      updatedCategory = category;
-      res.status(201).json(req.body);
-    }
+router.route('/categories')
+  .post(async (req, res) => {
+    let body = await categoryAction.create(req.body);
+    res.status(201).json(body);
+  })
+  .get(async (req, res) => {
+    let body = await categoryAction.read();
+    res.status(200).json(body);
   });
-  if(!updatedCategory){
-    res.send('No ID match');
-  }
-});
-router.delete('/categories/:id', (req,res) =>{
-  let orginalLength = db.categories.length;
-  db.categories = db.categories.filter(category => category.id !== req.params.id);
-  if (db.categories.length < orginalLength) {
-    res.status(200).send(`Deleted Product ${req.params.id}`);
-  } else {
-    res.status(200).send('No ID match');
-  }
-});
+
+router.route('/categories/:id')
+  .get(async (req, res) => {
+    let categories = await categoryAction.read(req.params.id);
+    res.status(200).json(categories);
+  })
+  .put(async (req, res) => {
+    let updated = await categoryAction.update(req.params.id, req.body);
+    res.status(201).json(updated);
+  })
+  .delete(async (req, res) => {
+    await categoryAction.delete(req.params.id);
+    res.status(200).send(`Deleted ${req.params.id}`);
+  });
 
 module.exports = router;
