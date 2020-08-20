@@ -2,51 +2,31 @@
 
 const express = require('express');
 const router = express.Router();
+const Model = require('../lib/models/products/products.collection');
+const productAction = new Model();
 
-// change this to a persisting database
-const db = {
-  products: [],
-  categories: [],
-};
-
-router.post('/products', (req,res) => {
-  db.products.push(req.body);
-  res.status(201).json(req.body);
-});
-router.get('/products', (req,res) => {
-  res.status(200).json(db.products);
-});
-router.get('/products/:id', (req,res) => {
-  let product = db.products.filter(entry => entry.id === req.params.id);
-  res.status(200).json(product[0]);
-});
-router.put('/products/:id', (req,res) => {
-  let updatedProduct;
-  db.products.forEach(product => {
-    if(product.id === req.params.id) {
-
-      product.id = req.body.id;
-      product.category = req.body.category;
-      product.name = req.body.name;
-      product.display_name = req.body.display_name;
-      product.description = req.body.description;
-
-      updatedProduct = product;
-      res.status(201).json(req.body);
-    }
+router.route('/products')
+  .post(async (req, res) => {
+    let body = await productAction.create(req.body);
+    res.status(201).json(body);
+  })
+  .get(async (req, res) => {
+    let body = await productAction.read();
+    res.status(200).json(body);
   });
-  if(!updatedProduct){
-    res.send('No ID match');
-  }
-});
-router.delete('/products/:id', (req,res) =>{
-  let orginalLength = db.products.length;
-  db.products = db.products.filter(product => product.id !== req.params.id);
-  if (db.products.length < orginalLength) {
-    res.status(200).send(`Deleted Product ${req.params.id}`);
-  } else {
-    res.status(200).send('No ID match');
-  }
-});
+
+router.route('/products/:id')
+  .get(async (req, res) => {
+    let products = await productAction.read(req.params.id);
+    res.status(200).json(products);
+  })
+  .put(async (req, res) => {
+    let updated = await productAction.update(req.params.id, req.body);
+    res.status(201).json(updated);
+  })
+  .delete(async (req, res) => {
+    await productAction.delete(req.params.id);
+    res.status(200).send(`Deleted ${req.params.id}`);
+  });
 
 module.exports = router;
