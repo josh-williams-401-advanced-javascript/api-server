@@ -18,13 +18,30 @@ describe('middleware', () => {
       expect(true).toBe(false);
     }
   });
-  it('calls 500 in the middleware', async () => {
-    await mockRequest.get('/api/v1/products/123');
+  it('calls an error on a put route with a bad id', async () => {
+    const results = await mockRequest.put('/api/v1/products/123');
+    expect(results.status).toBe(500);
     expect(spy).toHaveBeenCalledWith('500 Error');
   });
-  // it('calls 500 in the middleware', () => {
-  //   fiveHundred('req', { status: () => { return { send: () => { } }; } }, next);
-  //   expect(next).toHaveBeenCalled();
-  // });
+  it('calls the error on the delete route', async () => {
+    const results = await mockRequest.delete('/api/v1/products/123');
+    expect(results.status).toBe(500);
+    expect(spy).toHaveBeenCalledWith('500 Error');
+  });
+  it('calls the error on the post route', async () => {
+    const results = await mockRequest.post('/api/v1/categories/')
+      .send({name:'good', display_name:'Good'});
+    expect(results.status).toBe(500);
+    expect(spy).toHaveBeenCalledWith('500 Error');
+  });
+  it('calls 500 in the middleware', async () => {
+    const results = await mockRequest.get('/api/v1/products/123');
+    expect(results.status).toBe(500);
+    expect(spy).toHaveBeenCalledWith('500 Error');
+  });
+  it('will not respond to a bad model', async () => {
+    await mockRequest.get('/api/v1/produce');
+    expect(spy).toHaveBeenCalledWith('500 Error');
+  });
 
 });

@@ -15,7 +15,6 @@ afterEach(()=> {
 describe('Server - Products', () => {
 
   it('Responds 404 on an invalid route', async () => {
-
     const results = await mockRequest.get('/invalid');
     expect(results.status).toBe(404);
     return results;
