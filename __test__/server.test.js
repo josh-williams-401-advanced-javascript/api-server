@@ -59,6 +59,19 @@ describe('Server - Products', () => {
     expect(results.status).toBe(201);
   });
 
+  it('should respond to PATCH /products/:id', async ()  => {
+    // await postProduct();
+    let secondProduct = await postSecondProduct();
+    let id = secondProduct.body._id;
+    const results = await mockRequest
+      .patch(`/api/v1/products/${id}`)
+      .send({
+        description: 'Ten pockets',
+      });
+    expect(results.body.description).toBe('Ten pockets');
+    expect(results.body.name).toBe('pants');
+    expect(results.status).toBe(201);
+  });
 
   it('should respond to DELETE /products/:id', async () => {
     await postProduct();
