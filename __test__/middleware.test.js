@@ -3,11 +3,8 @@
 const { server } = require('../lib/server.js');
 const supergoose = require('@code-fellows/supergoose');
 const mockRequest = supergoose(server);
-// const logger = require('../middleware/logger');
-// const fiveHundred = require('../middleware/500.js');
 
 const spy = jest.spyOn(console, 'log');
-// let next = jest.fn();
 
 describe('middleware', () => {
   it('logs the time', async () => {

@@ -31,7 +31,7 @@ describe('Server - Products', () => {
     const results = await mockRequest
       .get('/api/v1/products');
     expect(results.status).toBe(200);
-    expect(results.body[0].name).toBe('shirt');
+    expect(results.body.results[0].name).toBe('shirt');
   });
 
   it('should respond to GET /products/:id', async () => {
@@ -65,11 +65,11 @@ describe('Server - Products', () => {
     let secondProduct = await postSecondProduct();
     let id = secondProduct.body._id;
     const results = await mockRequest.get('/api/v1/products');
-    let lengthOne = results.body.length;
+    let lengthOne = results.body.count;
     expect(results.status).toBe(200);
     await mockRequest.delete(`/api/v1/products/${id}`);
     const newResults = await mockRequest.get('/api/v1/products');
-    expect(newResults.body.length < lengthOne).toBe(true);
+    expect(newResults.body.count < lengthOne).toBe(true);
   });
 });
 
@@ -106,7 +106,7 @@ describe('Server - Categories', () => {
     const results = await mockRequest
       .get('/api/v1/categories');
     expect(results.status).toBe(200);
-    expect(results.body[0].name).toBe('clothes');
+    expect(results.body.results[0].name).toBe('clothes');
   });
 
   it('should respond to GET /categories/:id', async () => {
@@ -138,13 +138,12 @@ describe('Server - Categories', () => {
     let secondCat = await postSecondCat();
     let id = secondCat.body._id;
     const results = await mockRequest.get('/api/v1/categories');
-    let lengthOne = results.body.length;
+    let lengthOne = results.body.count;
     expect(results.status).toBe(200);
     await mockRequest.delete(`/api/v1/categories/${id}`);
     const newResults = await mockRequest.get('/api/v1/categories');
-    expect(newResults.body.length < lengthOne).toBe(true);
+    expect(newResults.body.count < lengthOne).toBe(true);
   });
-
 });
 
 const postCat = async () => {

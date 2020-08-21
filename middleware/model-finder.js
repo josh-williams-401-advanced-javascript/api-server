@@ -1,16 +1,13 @@
 'use strict';
 
-const category = require('../lib/models/categories/categories.collection');
-const product = require('../lib/models/products/products.collection');
-
-const modelFinder = (req, res, next) => {
+module.exports = (req, res, next) => {
   switch (req.params.model) {
   case 'categories':
-    req.model = category;
+    req.model = require('../lib/models/categories/categories.collection');
     next();
     return;
   case 'products':
-    req.model = product;
+    req.model = require('../lib/models/products/products.collection');
     next();
     return;
   default:
@@ -18,5 +15,3 @@ const modelFinder = (req, res, next) => {
     return;
   }
 };
-
-module.exports = modelFinder;
