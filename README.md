@@ -1,5 +1,9 @@
 # API Server
 
+### 8/20/2020
+
+The code is now more modularized and better equipped to handle errors. It responds to the same routes. It now includes a count of items in the database when you get all.
+
 ### 8/19/2020
 Requests now should be made on `/api/v1/products` and `/api/v1/categories`  
 POST, GET, PUT, and DELETE  
