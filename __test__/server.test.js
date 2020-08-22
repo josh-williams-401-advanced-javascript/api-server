@@ -13,6 +13,11 @@ afterEach(()=> {
 });
 
 describe('Server - Products', () => {
+  it('should get empty when empty', async () => {
+    const results = await mockRequest.get('/api/v1/products');
+    expect(results.body.results.length).toBe(0);
+    expect(results.body.count).toBe(0);
+  });
 
   it('Responds 404 on an invalid route', async () => {
     const results = await mockRequest.get('/invalid');
@@ -108,6 +113,11 @@ const postSecondProduct = async () => {
 };
 
 describe('Server - Categories', () => {
+  it('should get empty when empty', async () => {
+    const results = await mockRequest.get('/api/v1/categories');
+    expect(results.body.results.length).toBe(0);
+    expect(results.body.count).toBe(0);
+  });
   it('should respond properly to POST /categories', async () => {
     const results = await postCat();
     expect(results.body.name).toBe('clothes');
@@ -153,8 +163,9 @@ describe('Server - Categories', () => {
     const results = await mockRequest.get('/api/v1/categories');
     let lengthOne = results.body.count;
     expect(results.status).toBe(200);
-    await mockRequest.delete(`/api/v1/categories/${id}`);
+    let delReturn = await mockRequest.delete(`/api/v1/categories/${id}`);
     const newResults = await mockRequest.get('/api/v1/categories');
+    expect(delReturn.text).toBe('{}');
     expect(newResults.body.count < lengthOne).toBe(true);
   });
 });

@@ -2,7 +2,10 @@
 
 ### 8/20/2020
 
-The code is now more modularized and better equipped to handle errors. It responds to the same routes. It now includes a count of items in the database when you get all. I also realized that my PUT request was actually a PATCH mongoose request, so I turned the PUT into a PATCH, and added a PATCH. Now PUT and PATCH are both viable.
+The code is now more modularized and better equipped to handle errors. It responds to the same routes. It now includes a count of items in the database when you get all. I also realized that my PUT request was actually a PATCH mongoose request, so I turned the PUT into a PATCH, and added a PATCH. Now PUT and PATCH are both viable. I also added the ability to filter by any attribute with GET requests. 
+
+Make a new product with `name`, `display_name`, `category`, and `description`
+Make a new category with `name`, `display_name`, and `description`
 
 ### 8/19/2020
 Requests now should be made on `/api/v1/products` and `/api/v1/categories`  
