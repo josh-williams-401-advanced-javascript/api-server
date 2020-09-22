@@ -10,6 +10,10 @@ module.exports = (req, res, next) => {
     req.model = require('../lib/models/products/products.collection');
     next();
     return;
+  case 'todo':
+    req.model = require('../lib/models/toDo/to-do.collection');
+    next();
+    return;
   default:
     next('Invalid Request');
     return;
